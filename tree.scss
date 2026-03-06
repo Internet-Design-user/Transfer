@@ -1,0 +1,295 @@
+/*
+  @mixin 的内容是tree的样式，下方补充了些样式，具体自行填充吧 
+*/
+@mixin treeStyle($plainBg: #e6f3fe, $treeBg: #ecf5ff, $titleBg: #eee, $titleVbg: #f8f8f8, $itemColor: #606266) {
+    .device-list {
+        height: 100%;
+        background: $white;
+        overflow-y: auto;
+        .tree-left {
+            .filter-btn {
+                position: absolute;
+                top: 4px;
+                right: 8px;
+                z-index: 12;
+            }
+            .downloadIcon {
+                font-size: $fontSize14;
+                padding: 4px 6px !important;
+                margin: 0 5px;
+            }
+            .el-tree-node {
+                .el-tree-node__content {
+                    .el-tree-node__expand-icon.is-leaf {
+                        padding: 3px !important;
+                    }
+                }
+            }
+        }
+        .tree-title {
+            padding: 10px;
+            background: $titleBg;
+            .name {
+                font-weight: bold;
+            }
+        }
+        &.checkbox-tree {
+            .el-tree {
+                .el-tree-node {
+                    .el-tree-node__content {
+                        .el-tree-node__expand-icon.is-leaf {
+                            padding: 13px !important;
+                        }
+                        .checkbox-tree-pos {
+                            position: absolute;
+                            left: -42px;
+                        }
+                    }
+                }
+            }
+        }
+        &.menu-tree {
+            .el-tree {
+                .el-tree-node {
+                    .el-tree-node__content {
+                        .el-tree-node__expand-icon.is-leaf {
+                            padding: 3px !important;
+                        }
+                    }
+                }
+            }
+        }
+        &.topZero {
+            .tree-left {
+                .filter-btn {
+                    top: 0;
+                }
+            }
+        }
+    }
+    .right-event {
+        position: fixed;
+        z-index: 123;
+        background: $white;
+        border: 1px solid #e1e1e1;
+        box-sizing: border-box;
+        border-radius: 2px;
+        box-shadow: 2px 2px 2px $titleBg;
+        .el-button {
+            width: 100%;
+            border: none;
+            margin: 0;
+            padding: 10px 12px !important;
+            // text-align: left;
+            &:last-child {
+                border-top: 1px solid #eee;
+            }
+        }
+        .l-item {
+            padding: 10px 12px;
+            color: $itemColor;
+            text-align: center;
+            .specitfy {
+                position: absolute;
+                top: 0;
+                z-index: 134;
+                border: 1px solid #e1e1e1;
+                display: none;
+                .el-button {
+                    width: 100%;
+                    border: none;
+                    margin: 0;
+                    padding: 10px 12px !important;
+                    text-align: left;
+                    &:last-child {
+                        border-top: 1px solid #eee;
+                    }
+                }
+            }
+            .p-icon {
+                position: absolute;
+                top: 10px;
+                right: 5px;
+                z-index: 10;
+            }
+            &:hover {
+                color: $--color-primary;
+                background: $plainBg;
+                .specitfy {
+                    display: block;
+                }
+            }
+        }
+    }
+    .el-tree {
+        .el-tree-node {
+            .el-tree-node__content {
+                width: 100%;
+                position: relative;
+                .el-tree-node__label {
+                    font-size: $fontSize12;
+                }
+                .el-tree-node__expand-icon.expanded {
+                    -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+                }
+                .el-icon-caret-right:before {
+                    content: '\e783';
+                    font-size: $fontSize14;
+                    color: $itemColor;
+                }
+                .el-tree-node__expand-icon.expanded.el-icon-caret-right:before {
+                    content: '\e781';
+                    font-size: $fontSize14;
+                    color: $itemColor;
+                }
+                .is-leaf.el-icon-caret-right:before {
+                    content: ' ';
+                    color: $--color-primary;
+                }
+                .tree-ellipsis {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    font-size: $fontSize12;
+                    line-height: 20px;
+                    width: 100%;
+                }
+                .more-btn {
+                    position: absolute;
+                    top: 3px;
+                    right: 5px;
+                    z-index: 10;
+                    height: 20px;
+                    line-height: 20px;
+                }
+                &:hover {
+                    background: $treeBg;
+                }
+            }
+            &.is-expanded.is-focusable,
+            &.is-current.is-focusable {
+                .expanded.el-tree-node__expand-icon:before {
+                    color: $--color-primary;
+                }
+            }
+        }
+        .el-tree-node.is-current > .el-tree-node__content {
+            background: $treeBg !important;
+            color: $--color-primary;
+        }
+        &.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
+            background: $treeBg !important;
+            color: $--color-primary;
+        }
+        &.special-tree {
+            .el-tree-node {
+                .el-tree-node__content {
+                    .is-leaf {
+                        padding: 12px;
+                        margin-left: 2px;
+                    }
+                }
+            }
+        }
+    }
+    .virtutal-tree {
+        .tree-title {
+            padding: 8px 10px;
+            background: $titleVbg;
+            .name {
+                font-weight: bold;
+            }
+        }
+        .downloadIcon {
+            font-size: $fontSize14;
+            padding: 4px 6px !important;
+            margin: 0 5px;
+        }
+        .virtutal-easy-tree {
+            .vue-recycle-scroller {
+                .vue-recycle-scroller__item-wrapper {
+                    .el-tree-node__content {
+                        .el-tree-node__expand-icon.is-leaf {
+                            padding: 3px;
+                        }
+                    }
+                }
+            }
+        }
+        &.checkbox-tree {
+            .virtutal-easy-tree {
+                .vue-recycle-scroller {
+                    .vue-recycle-scroller__item-wrapper {
+                        .el-tree-node__content {
+                            .el-tree-node__expand-icon.is-leaf {
+                                padding: 13px !important;
+                            }
+                            .checkbox-tree-pos {
+                                position: absolute;
+                                left: -42px;
+                            }
+                            .checkbox-pr {
+                                position: relative;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.special-tree {
+            .el-tree-node {
+                .el-tree-node__content {
+                    .is-leaf {
+                        padding: 12px;
+                        margin-left: 2px;
+                    }
+                }
+            }
+        }
+        &.device-virtutal-tree {
+            .virtutal-easy-tree {
+                .vue-recycle-scroller {
+                    .vue-recycle-scroller__item-wrapper {
+                        .el-tree-node__content {
+                            .el-tree-node__expand-icon.is-leaf {
+                                padding: 12px !important;
+                            }
+                            .checkbox-tree-pos {
+                                position: absolute;
+                                left: 24px;
+                            }
+                            .checkbox-tree-zero {
+                                position: absolute;
+                                left: 8px;
+                                top: 8px;
+                                z-index: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.treeLeft,
+  .treeRight {
+      .title {
+          padding: 10px;
+          font-size: $fontSize14;
+          font-weight: 500;
+          background: $titleBg;
+      }
+      .treeData {
+          height: 400px;
+          overflow-y: auto;
+          box-sizing: border-box;
+      }
+  }
+
+.borders {
+    border: 1px solid #eee;
+}
